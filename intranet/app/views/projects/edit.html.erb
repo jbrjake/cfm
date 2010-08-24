@@ -1,0 +1,32 @@
+<h1>Editing project</h1>
+
+<% form_for(@project) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </p>
+  <p>
+    <%= f.label :due_date %><br />
+    <%= f.datetime_select :due_date %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.select( :status, [['New', 1], ['Vetting', 2], ['Pricing', 3], ['Preparing for submission', 4], ['Sent', 5], ['Not awarded', 6], ['Awarded', 7], ['Awaiting PO', 8], ['Shipped', 9], ['Awaiting payment', 10], ['Payment received', 11], ['Discarded', 12]]) %>  </p>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>

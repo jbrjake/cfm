@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%=h @site.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @site.url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @site.description %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%=h @site.username %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @site.password %>
+</p>
+
+<p>
+  <b>Last modified at:</b>
+ <%=h @site.updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

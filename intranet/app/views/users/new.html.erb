@@ -1,0 +1,28 @@
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <fieldset>
+  <legend>Enter User Details</legend>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :size => 40 %>
+  </p>
+  <p>
+    <%= f.label :level, 'User level:' %><br />
+    <%= f.select( :level, [['New', 1], ['Intern', 2], ['Employee', 3], ['Manager', 4], ['Administrator', 5]]) %>
+  </p>
+  <p>
+  <p>
+    <%= f.label :password, 'Password' %><br />
+    <%= f.password_field :password, :size => 40 %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, 'Confirm' %><br />
+    <%= f.password_field :password_confirmation, :size => 40 %>
+  </p>
+    <%= f.submit 'Add User', :class => "submit"  %>
+  </p>
+
+  </fieldset>
+<% end %>

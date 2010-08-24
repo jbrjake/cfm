@@ -1,0 +1,5 @@
+class Site < ActiveRecord::Base
+
+attr_accessor :last_modified_by
+
+end

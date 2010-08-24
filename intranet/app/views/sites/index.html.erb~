@@ -1,0 +1,52 @@
+<h1>Listing sites</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <% if @level > 1 %>
+    <th>Username</th>
+    <th>Password</th>
+    <% end %>
+  </tr>
+
+<% @sites.each do |site| %>
+  <tr>
+    <td><a href="<%= site.url %>"><%= site.name %></a></td> 
+    <% if @level > 1 %>
+    <td><%=h site.username %></td>
+    <td><%=h site.password %></td>
+    <% end %>
+    <% if @level > 1 %>
+    <td><%= link_to 'Show', site %></td>
+    <% end %>
+    <% if @level > 2 %>
+  	<td><%= link_to 'Edit', edit_site_path(site) %></td>
+    	<td><%= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+User name is <%= @name %><br /><br />
+<% if @level %>
+	User level is <%=  @level.to_s %>: <br />
+	<i>
+	<% if @level > 0 %>
+		Can see sites list.<br />
+	<% end %>
+	<% if @level > 1 %>
+		Can see usernames and passwords.<br />
+	<% end %>
+	<% if @level > 2 %>
+		Can add and modify site info.<br />
+	<% end %>
+	<% if @level > 3 %>
+		Can add or modify users.<br />
+	<% end %>
+	</i>
+	<% if @level > 2 %>
+		<br /><%= link_to 'New site', new_site_path %>
+	<% end %>
+<% end %>

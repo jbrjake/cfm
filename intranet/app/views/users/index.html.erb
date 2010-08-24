@@ -1,0 +1,32 @@
+<h3>Users</h3>
+
+<table>
+  <tr>
+    <th>Name <a href="?sort_by=name+ASC">&uarr;</a> <a href="?sort_by=name+DESC">&darr;</a></th>
+    <th>User Level <a href="?sort_by=level+ASC">&uarr;</a> <a href="?sort_by=level+DESC">&darr;</a></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%=h user.name %></td>
+    <% if user.level == 1 %>
+	<td>New</td>
+    <% elsif user.level == 2 %>
+	<td>Intern</td>
+    <% elsif user.level == 3 %>
+	<td>Employee</td>
+    <% elsif user.level == 4 %>
+	<td>Manager</td>
+    <% elsif user.level == 5 %>
+	<td>Administrator</td>
+    <% end %>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user', new_user_path %>

@@ -1,0 +1,57 @@
+<h1>Projects</h1>
+
+<table>
+  <tr>
+    <th>Name <a href="?sort_by=name+ASC">&uarr;</a> <a href="?sort_by=name+DESC">&darr;</a></th>
+    <th>Due <a href="?sort_by=due_date+ASC">&uarr;</a> <a href="?sort_by=due_date+DESC">&darr;</a></th>
+    <th>Status <a href="?sort_by=status+ASC">&uarr;</a> <a href="?sort_by=status+DESC">&darr;</a></th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><a href="<%= project.link %>"><%=project.name %></a></td>
+    <td><%=h project.due_date %></td>
+    <td>
+    <% if project.status == 1 %>
+	New
+    <% elsif project.status == 2 %>
+	Vetting
+    <% elsif project.status == 3 %>
+	Pricing
+    <% elsif project.status == 4 %>
+	Preparing for submission
+    <% elsif project.status == 5 %>
+	Sent
+    <% elsif project.status == 6 %>
+	Not awarded
+    <% elsif project.status == 7 %>
+	Awarded
+    <% elsif project.status == 8 %>
+	Awaiting PO
+    <% elsif project.status == 9 %>
+	Shipped
+    <% elsif project.status == 10 %>
+	Awaiting payment
+    <% elsif project.status == 11 %>
+	Payment received
+    <% elsif project.status == 12 %>
+	Discarded
+    <% end %>
+    </td>
+
+    <td><%= link_to 'Show', project %></td>
+    <% if @level > 2 %>
+	   <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <% end %>
+    <% if @level > 3 %>
+	   <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if @level > 1 %>
+ <%= link_to 'New project', new_project_path %>
+<% end %>

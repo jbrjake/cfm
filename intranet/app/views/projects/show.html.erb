@@ -1,0 +1,52 @@
+<p>
+  <b>Name:</b>
+  <%=h @project.name %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%=h @project.link %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @project.due_date %>
+</p>
+
+<p>
+  <b>Status:</b>
+    <% if @project.status == 1 %>
+	New
+    <% elsif @project.status == 2 %>
+	Vetting
+    <% elsif @project.status == 3 %>
+	Pricing
+    <% elsif @project.status == 4 %>
+	Preparing for submission
+    <% elsif @project.status == 5 %>
+	Sent
+    <% elsif @project.status == 6 %>
+	Not awarded
+    <% elsif @project.status == 7 %>
+	Awarded
+    <% elsif @project.status == 8 %>
+	Awaiting PO
+    <% elsif @project.status == 9 %>
+	Shipped
+    <% elsif @project.status == 10 %>
+	Awaiting payment
+    <% elsif @project.status == 11 %>
+	Payment received
+    <% elsif @project.status == 12 %>
+	Discarded
+    <% end %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @project.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Sites: <%= controller.action_name %></title>
+<link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">	
+<!--[if lt IE 8]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+</head>
+<body>
+
+<div class="container">
+	<div class="prepend-4 prepend-top span-20 last">
+		<h1><%= @page_title || "CFM Intranet" %></h1>
+	</div>
+
+	<div class="span-4">
+	<div class="box">
+	<% if session[:user_id] %>
+		<%= link_to 'Login as another user', :controller => 'admin', :action => 'login' %><br />
+		<%= link_to 'Logout', :controller => 'admin', :action => 'logout' %><br />
+		<% if session[:user_level] > 3 %><br />
+			<%= link_to 'Users', :controller => 'users', :action => 'index' %><br />
+		<% end %>
+	<% else %>
+		<%= link_to 'Login', :controller => 'admin', :action => 'login' %><br />		
+	<% end %>
+	</div>
+	</div>
+
+	<div class="span-20 last">
+	<div class="box">
+		<%= yield %>
+		<p style="color: green"><%= notice %></p>
+	</div></div>
+</div>
+
+</body>
+</html>
