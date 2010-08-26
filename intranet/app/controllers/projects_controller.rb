@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.xml
   def new
     @project = Project.new
-
+    5.times { @project.assets.build }
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @project }
@@ -37,6 +37,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    5.times { @project.assets.build }
   end
 
   # POST /projects

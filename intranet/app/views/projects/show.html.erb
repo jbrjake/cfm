@@ -47,6 +47,12 @@
   <%=h @project.description %>
 </p>
 
+<p>
+  <b>Files:</b>
+  <% @project.assets.each do |asset| %>
+		<%= link_to( image_tag(asset.asset.url(:thumb)), asset.asset.url(:original) ) %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
